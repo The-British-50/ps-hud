@@ -7,6 +7,12 @@ QBCore.Commands.Add('cash', 'Check Cash Balance', {}, false, function(source, ar
     TriggerClientEvent('hud:client:ShowAccounts', source, 'cash', cashamount)
 end)
 
+QBCore.Commands.Add('dirty', 'Check Dirty Cash Balance', {}, false, function(source, args)
+    local Player = QBCore.Functions.GetPlayer(source)
+    local cashamount = Player.PlayerData.money.dirty
+    TriggerClientEvent('hud:client:ShowAccounts', source, 'dirty', dirtyamount)
+end)
+
 QBCore.Commands.Add('bank', 'Check Bank Balance', {}, false, function(source, args)
     local Player = QBCore.Functions.GetPlayer(source)
     local bankamount = Player.PlayerData.money.bank
