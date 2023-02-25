@@ -14,6 +14,7 @@ local hunger = 100
 local thirst = 100
 local cashAmount = 0
 local bankAmount = 0
+local dirtyAmount = 0
 local nitroActive = 0
 local harness = 0
 local hp = 100
@@ -1062,11 +1063,17 @@ RegisterNetEvent('hud:client:ShowAccounts', function(type, amount)
             type = 'cash',
             cash = amount
         })
-    else
+    elseif
         SendNUIMessage({
             action = 'show',
             type = 'bank',
             bank = amount
+        }) then
+    else
+        SendNUIMessage({
+            action = 'show',
+            type = 'dirty',
+            dirty = amount
         })
     end
 end)
@@ -1074,10 +1081,12 @@ end)
 RegisterNetEvent('hud:client:OnMoneyChange', function(type, amount, isMinus)
     cashAmount = PlayerData.money['cash']
     bankAmount = PlayerData.money['bank']
+    dirtyAmount = PlayerData.money['dirty']
     SendNUIMessage({
         action = 'updatemoney',
         cash = cashAmount,
         bank = bankAmount,
+        dirty = dirtyAmount,
         amount = amount,
         minus = isMinus,
         type = type
