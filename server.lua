@@ -9,7 +9,7 @@ end)
 
 QBCore.Commands.Add('dirty', 'Check Dirty Cash Balance', {}, false, function(source, args)
     local Player = QBCore.Functions.GetPlayer(source)
-    local cashamount = Player.PlayerData.money.dirty
+    local dirtyamount = Player.PlayerData.money.dirty
     TriggerClientEvent('hud:client:ShowAccounts', source, 'dirty', dirtyamount)
 end)
 
