@@ -1,25 +1,19 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local ResetStress = false
 
-QBCore.Commands.Add('cash', 'Check Cash Balance', {}, false, function(source, args)
+QBCore.Commands.Add('cash', Lang:t('info.check_cash_balance'), {}, false, function(source, args)
     local Player = QBCore.Functions.GetPlayer(source)
     local cashamount = Player.PlayerData.money.cash
     TriggerClientEvent('hud:client:ShowAccounts', source, 'cash', cashamount)
 end)
 
-QBCore.Commands.Add('dirty', 'Check Dirty Cash Balance', {}, false, function(source, args)
-    local Player = QBCore.Functions.GetPlayer(source)
-    local dirtyamount = Player.PlayerData.money.dirty
-    TriggerClientEvent('hud:client:ShowAccounts', source, 'dirty', dirtyamount)
-end)
-
-QBCore.Commands.Add('bank', 'Check Bank Balance', {}, false, function(source, args)
+QBCore.Commands.Add('bank', Lang:t('info.check_bank_balance'), {}, false, function(source, args)
     local Player = QBCore.Functions.GetPlayer(source)
     local bankamount = Player.PlayerData.money.bank
     TriggerClientEvent('hud:client:ShowAccounts', source, 'bank', bankamount)
 end)
 
-QBCore.Commands.Add("dev", "Enable/Disable developer Mode", {}, false, function(source, args)
+QBCore.Commands.Add("dev", Lang:t('info.toggle_dev_mode'), {}, false, function(source, args)
     TriggerClientEvent("qb-admin:client:ToggleDevmode", source)
 end, 'admin')
 
